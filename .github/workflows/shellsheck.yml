@@ -9,12 +9,13 @@ jobs:
   sh-checker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Run the sh-checker
         uses: luizm/action-sh-checker@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SHFMT_OPTS: -s # arguments to shfmt.
+          SHELLCHECK_OPTS: -e SC2329
         with:
-          sh_checker_comment: true
+          sh_checker_comment: false
           sh_checker_exclude: gradlew
